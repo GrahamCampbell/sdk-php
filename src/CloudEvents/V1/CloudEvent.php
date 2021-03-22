@@ -15,15 +15,13 @@ class CloudEvent implements CloudEventInterface
     private ?string $dataSchema;
     private ?string $subject;
     private ?DateTimeInterface $time;
-
-    /** @var mixed|null */
-    private $data;
+    private ?string $data;
 
     public function __construct(
         string $id,
         string $source,
         string $type,
-        $data = null,
+        ?string $data = null,
         ?string $dataContentType = null,
         ?string $dataSchema = null,
         ?string $subject = null,
@@ -49,7 +47,10 @@ class CloudEvent implements CloudEventInterface
         return $this->id;
     }
 
-    public function setId(string $id): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setId(string $id): self
     {
         $this->id = $id;
 
@@ -61,7 +62,10 @@ class CloudEvent implements CloudEventInterface
         return $this->source;
     }
 
-    public function setSource(string $source): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setSource(string $source): self
     {
         $this->source = $source;
 
@@ -73,25 +77,25 @@ class CloudEvent implements CloudEventInterface
         return $this->type;
     }
 
-    public function setType(string $type): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setType(string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return mixed|null
-     */
-    public function getData()
+    public function getData(): ?string
     {
         return $this->data;
     }
 
     /**
-     * @param mixed|null $data
+     * @return $this
      */
-    public function setData($data): CloudEvent
+    public function setData(?string $data): self
     {
         $this->data = $data;
 
@@ -103,7 +107,10 @@ class CloudEvent implements CloudEventInterface
         return $this->dataContentType;
     }
 
-    public function setDataContentType(?string $dataContentType): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setDataContentType(?string $dataContentType): self
     {
         $this->dataContentType = $dataContentType;
 
@@ -115,7 +122,10 @@ class CloudEvent implements CloudEventInterface
         return $this->dataSchema;
     }
 
-    public function setDataSchema(?string $dataSchema): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setDataSchema(?string $dataSchema): self
     {
         $this->dataSchema = $dataSchema;
 
@@ -127,7 +137,10 @@ class CloudEvent implements CloudEventInterface
         return $this->subject;
     }
 
-    public function setSubject(?string $subject): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
 
@@ -139,7 +152,10 @@ class CloudEvent implements CloudEventInterface
         return $this->time;
     }
 
-    public function setTime(?DateTimeInterface $time): CloudEvent
+    /**
+     * @return $this
+     */
+    public function setTime(?DateTimeInterface $time): self
     {
         $this->time = $time;
 
